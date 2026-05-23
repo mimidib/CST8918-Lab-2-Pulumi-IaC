@@ -1,6 +1,12 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as docker from "@pulumi/docker";
 
+// Get configuration values
+const config = new pulumi.Config();
+const frontendPort = config.requireNumber("frontendPort");
+const backendPort = config.requireNumber("backendPort");
+const mongoPort = config.requireNumber("mongoPort");
+
 const stack = pulumi.getStack();
 
 // Pull the backend image
