@@ -25,3 +25,8 @@ const frontend = new docker.RemoteImage(`${frontendImageName}Image`, {
 const mongoImage = new docker.RemoteImage("mongoImage", {
   name: "pulumi/tutorial-pulumi-fundamentals-database:latest",
 });
+
+// Create a Docker network
+const network = new docker.Network("network", {
+  name: `services-${stack}`,
+});
